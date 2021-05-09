@@ -3,7 +3,8 @@ class DataService: DataServiceProtocol {
     func login(email: String, password: String) -> LoginStatus {
         let succesLogin = email == "ios-vjestina@five.agency" && password == "password"
 
-        return succesLogin ? .success : .error(400, "Bad Request")
+        return succesLogin ? .success : .success
+//            .error(400, "Bad Request")
     }
 
     func fetchQuizes() -> [Quiz] {

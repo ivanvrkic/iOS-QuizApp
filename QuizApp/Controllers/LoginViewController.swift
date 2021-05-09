@@ -8,8 +8,8 @@ import Foundation
 import UIKit
 
 
-class LoginViewController1: UIViewController {
-    
+class LoginViewController: UIViewController {
+    private var router: AppRouterProtocol!
     private var PopQuizLabel: UILabel!
     private var popQuizLabel: UILabel!
     private var emailTextF: UITextField!
@@ -19,16 +19,38 @@ class LoginViewController1: UIViewController {
     private var iconClick: Bool = true
     private var emailView: UIView!
     private var passwordView: UIView!
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        buildViews()
-        addConstraints()
-        
+    private var gradientLayer: CAGradientLayer!
+    convenience init(router: AppRouterProtocol) {
+        self.init()
+        self.router = router
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
+    }
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        buildViews()
+        addConstraints()
+        gradientLayer = CAGradientLayer()
+        gradientLayer.colors = [
+            UIColor(red: 0.453, green: 0.308, blue: 0.637, alpha: 1).cgColor,
+            UIColor(red: 0.154, green: 0.185, blue: 0.463, alpha: 1).cgColor
+          ]
+        gradientLayer.frame = view.bounds
+        view.layer.insertSublayer(gradientLayer, at: 0)
+    }
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        gradientLayer.frame = view.bounds
+    }
     private func buildViews() {
-        self.view.setBackground()
         PopQuizLabel = UILabel()
         view.addSubview(PopQuizLabel)
         PopQuizLabel.text = "PopQuiz"
@@ -146,21 +168,10 @@ class LoginViewController1: UIViewController {
         let loginStatus = data.login(email: emailTextF.text!, password: passwordTextF.text!)
         switch loginStatus {
             case LoginStatus.success:
-                print(emailTextF.text!,":", passwordTextF.text!)
+                router.setTabBarController()
             case LoginStatus.error(_, _):
                 print(loginStatus)
         }
     }
 }
 
-extension UIView {
-    func setBackground() {
-        let layer0 = CAGradientLayer()
-        layer0.frame = bounds
-        layer0.colors = [
-          UIColor(red: 0.453, green: 0.308, blue: 0.637, alpha: 1).cgColor,
-          UIColor(red: 0.154, green: 0.185, blue: 0.463, alpha: 1).cgColor
-        ]
-        layer.insertSublayer(layer0, at: 0)
-    }
-}
