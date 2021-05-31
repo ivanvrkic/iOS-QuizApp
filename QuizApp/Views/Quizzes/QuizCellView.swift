@@ -80,9 +80,23 @@ class QuizCellView: UICollectionViewCell {
     public func setUp(quiz:Quiz) {
         titleLabel.text = quiz.title
         descriptionLabel.text=quiz.description
-
-        quizImage.image = UIImage(named: "download.jpeg")
         ratingView.rate(rating: quiz.level)
         print(quiz.level)
+        guard let url = URL(string: quiz.imageUrl) else { return }
+        quizImage.load(url: url)
+    }
+}
+
+extension UIImageView {
+    func load(url: URL) {
+        DispatchQueue.global().async { [weak self] in
+            if let data = try? Data(contentsOf: url) {
+                if let image = UIImage(data: data) {
+                    DispatchQueue.main.async {
+                        self?.image = image
+                    }
+                }
+            }
+        }
     }
 }

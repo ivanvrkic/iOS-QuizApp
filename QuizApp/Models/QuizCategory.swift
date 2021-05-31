@@ -1,6 +1,5 @@
-enum QuizCategory: String {
+enum QuizCategory: String, Codable  {
 
-    case sport = "Sport"
-    case science = "Science"
-
+    case sport = "SPORTS"
+    case science = "SCIENCE"
 }

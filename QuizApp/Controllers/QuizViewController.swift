@@ -18,6 +18,9 @@ class QuizViewController: UIViewController {
     private var correctAnswers: Int!
     private var router: AppRouterProtocol!
     private var gradientLayer: CAGradientLayer!
+    private let quizLogic = QuizLogic(networkService: NetworkService())
+    private var start: DispatchTime!
+    private var end: DispatchTime!
     convenience init (quiz: Quiz, router: AppRouterProtocol) {
         self.init()
         self.quiz = quiz
@@ -26,6 +29,7 @@ class QuizViewController: UIViewController {
     }
     
     override func viewDidLoad() {
+        super.viewDidLoad()
         buildNavbar()
         buildView()
         setConstraints()
@@ -125,6 +129,7 @@ class QuizViewController: UIViewController {
         }
         
         displayQuestion(response: 0)
+        start = DispatchTime.now()
     }
     
     @objc
@@ -148,7 +153,11 @@ class QuizViewController: UIViewController {
     
     private func displayQuestion(response: Int) {
         if questionIndex==quiz.questions.count {
+            end = DispatchTime.now()
+            let time = Double(end.uptimeNanoseconds - start.uptimeNanoseconds)/1_000_000_000
             let controller = ResultViewController(correct: correctAnswers, total: quiz.questions.count, router: router)
+            let result = QuizResult(userId: UserDefaults.standard.integer(forKey: "userId"), quizId: quiz.id, time: time, correctAnswers: correctAnswers)
+            quizLogic.sendResult(result: result)
             self.navigationController?.pushViewController(controller, animated: true)
             return
         }

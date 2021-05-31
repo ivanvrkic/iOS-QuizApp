@@ -55,7 +55,7 @@ class QuestionTrackerView: UIView {
                 QuestionTrack[index].backgroundColor = .red
             }
         }
-        if (index+1) < numberOfQuestions {
+        if (index+1) <= numberOfQuestions {
             QuestionTrack[index+1].backgroundColor = .white
         }
     }

@@ -20,6 +20,7 @@ class LoginViewController: UIViewController {
     private var emailView: UIView!
     private var passwordView: UIView!
     private var gradientLayer: CAGradientLayer!
+    private let loginLogic = LoginLogic(networkService: NetworkService())
     convenience init(router: AppRouterProtocol) {
         self.init()
         self.router = router
@@ -161,16 +162,16 @@ class LoginViewController: UIViewController {
     
     @objc
     private func login(){
-        UIView.animate(withDuration: 0.1,
-                       animations: {self.loginButton.alpha = 1},
-                       completion: { _ in self.loginButton.alpha = 0.5})
-        let data: DataService = DataService()
-        let loginStatus = data.login(email: emailTextF.text!, password: passwordTextF.text!)
-        switch loginStatus {
-            case LoginStatus.success:
-                router.setTabBarController()
-            case LoginStatus.error(_, _):
-                print(loginStatus)
+        loginLogic.login(username: emailTextF.text!, password: passwordTextF.text!) { loginStatus in
+            UIView.animate(withDuration: 0.1,
+                           animations: {self.loginButton.alpha = 1},
+                           completion: { _ in self.loginButton.alpha = 0.5})
+            switch loginStatus {
+                case LoginStatus.success:
+                    self.router.setTabBarController()
+                case LoginStatus.error(_, _):
+                    print(loginStatus)
+            }
         }
     }
 }

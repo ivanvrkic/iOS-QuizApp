@@ -30,6 +30,7 @@ class QuizzesViewController: UIViewController {
     private var gradientLayer: CAGradientLayer!
     private var quizCollectionView: QuizzesCollectionView!
     private var quizzesd: [QuizCategory:[Quiz]] = [:]
+    private let quizzesLogic = QuizzesLogic(networkService: NetworkService())
     
     convenience init(router: AppRouterProtocol) {
         self.init()
@@ -37,7 +38,6 @@ class QuizzesViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         buildViews()
         addConstraints()
         gradientLayer = CAGradientLayer()
@@ -66,7 +66,7 @@ class QuizzesViewController: UIViewController {
         getButton.setTitleColor(.black, for: .normal)
         getButton.layer.cornerRadius = 25
         getButton.backgroundColor = .white
-        getButton.addTarget(self, action: #selector(getQuiz), for: .touchUpInside)
+        getButton.addTarget(self, action: #selector(getQuizzes), for: .touchUpInside)
         errView = UIView()
         view.addSubview(errView)
         xImgErr = UIImageView(image: UIImage(systemName: "xmark.circle"))
@@ -149,27 +149,27 @@ class QuizzesViewController: UIViewController {
         ])
 
     }
-    
     @objc
-    private func getQuiz(){
-        errView.isHidden = true
-        let dataService =  DataService()
-        quizzes = dataService.fetchQuizes()
-        nbacount = quizzes.flatMap{$0.questions}.filter{$0.question.contains("NBA")}.count
-        funFactLabel.isHidden=false
-        infLabel.isHidden=false
-        infLabel.text = "There are \(nbacount!) questions that contain the word NBA"
-        quizzesd = quizzes.reduce([:] as! [QuizCategory: [Quiz]], {
-                a, b in
-                    var map:[QuizCategory: [Quiz]] = a
-                    var value = map[b.category,default: []]
-                    value.append(b)
-                    map[b.category] = value
-                    return map
-            }
-        )
-        quizCollectionView.isHidden = false
-        quizCollectionView.addQuizzes(quizzes: quizzesd)
+    private func getQuizzes(){
+        quizzesLogic.fetchQuizzes() { quizzes in
+            self.errView.isHidden = true
+            self.nbacount = quizzes.flatMap{$0.questions}.filter{$0.question.contains("NBA")}.count
+            self.funFactLabel.isHidden=false
+            self.infLabel.isHidden=false
+            self.infLabel.text = "There are \(self.nbacount!) questions that contain the word NBA"
+            self.quizzesd = quizzes.reduce([:] as! [QuizCategory: [Quiz]], {
+                    a, b in
+                        var map:[QuizCategory: [Quiz]] = a
+                        var value = map[b.category,default: []]
+                        value.append(b)
+                        map[b.category] = value
+                        return map
+                }
+            )
+            self.quizCollectionView.isHidden = false
+            self.quizCollectionView.addQuizzes(quizzes: self.quizzesd)
+            
+        }
         
     }
 
