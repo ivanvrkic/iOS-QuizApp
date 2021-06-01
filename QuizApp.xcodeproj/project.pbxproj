@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		082F60B3AF2CF0B58984A3AF /* Pods_QuizApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD3EB08D38C9DCF310062808 /* Pods_QuizApp.framework */; };
+		13C3238B85BE4D540DCA614C /* Pods_QuizApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E7A52BB1C28436B96C4C953 /* Pods_QuizApp.framework */; };
 		9F4B6F3426274D3C0072BA36 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4B6F3026274D3C0072BA36 /* Question.swift */; };
 		9F4B6F3526274D3C0072BA36 /* LoginStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4B6F3126274D3C0072BA36 /* LoginStatus.swift */; };
 		9F4B6F3626274D3C0072BA36 /* Quiz.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4B6F3226274D3C0072BA36 /* Quiz.swift */; };
@@ -45,11 +45,26 @@
 		9F74A03E2664144800453411 /* LoginLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F74A03D2664144800453411 /* LoginLogic.swift */; };
 		9F74A0412665026E00453411 /* QuizLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F74A0402665026E00453411 /* QuizLogic.swift */; };
 		9F74A044266502E000453411 /* QuizResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F74A043266502E000453411 /* QuizResult.swift */; };
+		9F74A05326660F9F00453411 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9F74A05126660F9F00453411 /* Model.xcdatamodeld */; };
+		9F74A0772666161300453411 /* Quiz+CD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F74A0762666161300453411 /* Quiz+CD.swift */; };
+		9F74A08426661DC000453411 /* Question+CD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F74A08326661DC000453411 /* Question+CD.swift */; };
+		9F74A08D26661F2F00453411 /* CDQuestion+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F74A08C26661F2F00453411 /* CDQuestion+CoreDataClass.swift */; };
+		9F74A09226661FF900453411 /* CDQuestion+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F74A09126661FF900453411 /* CDQuestion+CoreDataProperties.swift */; };
+		9F74A0962666201100453411 /* CDQuiz+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F74A0952666201100453411 /* CDQuiz+CoreDataProperties.swift */; };
+		9F74A0992666202100453411 /* CDQuiz+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F74A0982666202100453411 /* CDQuiz+CoreDataClass.swift */; };
+		9F74A0A42666460800453411 /* QuizCoreDataSourceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F74A0A32666460800453411 /* QuizCoreDataSourceProtocol.swift */; };
+		9F74A0A92666462700453411 /* QuizCoreDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F74A0A82666462700453411 /* QuizCoreDataSource.swift */; };
+		9F74A0AC266646C000453411 /* FilterSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F74A0AB266646C000453411 /* FilterSettings.swift */; };
+		9F74A0B12666530B00453411 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F74A0B02666530B00453411 /* CoreDataStack.swift */; };
+		9F74A0B42666535C00453411 /* QuizDataRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F74A0B32666535C00453411 /* QuizDataRepositoryProtocol.swift */; };
+		9F74A0B7266653AD00453411 /* QuizDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F74A0B6266653AD00453411 /* QuizDataRepository.swift */; };
+		9F74A0BD26665D3200453411 /* QuizUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F74A0BC26665D3200453411 /* QuizUseCase.swift */; };
+		9FC68F332666C862000072AA /* TestController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC68F322666C862000072AA /* TestController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		4AE2F3602D791D00CB2EA572 /* Pods-QuizApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuizApp.debug.xcconfig"; path = "Target Support Files/Pods-QuizApp/Pods-QuizApp.debug.xcconfig"; sourceTree = "<group>"; };
-		9073BF06E36A3429155BD888 /* Pods-QuizApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuizApp.release.xcconfig"; path = "Target Support Files/Pods-QuizApp/Pods-QuizApp.release.xcconfig"; sourceTree = "<group>"; };
+		1E7A52BB1C28436B96C4C953 /* Pods_QuizApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QuizApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1F2DA925B034D0074AA2684B /* Pods-QuizApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuizApp.debug.xcconfig"; path = "Target Support Files/Pods-QuizApp/Pods-QuizApp.debug.xcconfig"; sourceTree = "<group>"; };
 		9F4B6F3026274D3C0072BA36 /* Question.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		9F4B6F3126274D3C0072BA36 /* LoginStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginStatus.swift; sourceTree = "<group>"; };
 		9F4B6F3226274D3C0072BA36 /* Quiz.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Quiz.swift; sourceTree = "<group>"; };
@@ -89,7 +104,22 @@
 		9F74A03D2664144800453411 /* LoginLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginLogic.swift; sourceTree = "<group>"; };
 		9F74A0402665026E00453411 /* QuizLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizLogic.swift; sourceTree = "<group>"; };
 		9F74A043266502E000453411 /* QuizResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizResult.swift; sourceTree = "<group>"; };
-		AD3EB08D38C9DCF310062808 /* Pods_QuizApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QuizApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9F74A05226660F9F00453411 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		9F74A0762666161300453411 /* Quiz+CD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Quiz+CD.swift"; sourceTree = "<group>"; };
+		9F74A08326661DC000453411 /* Question+CD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Question+CD.swift"; sourceTree = "<group>"; };
+		9F74A08C26661F2F00453411 /* CDQuestion+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDQuestion+CoreDataClass.swift"; sourceTree = "<group>"; };
+		9F74A09126661FF900453411 /* CDQuestion+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDQuestion+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		9F74A0952666201100453411 /* CDQuiz+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDQuiz+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		9F74A0982666202100453411 /* CDQuiz+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDQuiz+CoreDataClass.swift"; sourceTree = "<group>"; };
+		9F74A0A32666460800453411 /* QuizCoreDataSourceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizCoreDataSourceProtocol.swift; sourceTree = "<group>"; };
+		9F74A0A82666462700453411 /* QuizCoreDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizCoreDataSource.swift; sourceTree = "<group>"; };
+		9F74A0AB266646C000453411 /* FilterSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterSettings.swift; sourceTree = "<group>"; };
+		9F74A0B02666530B00453411 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		9F74A0B32666535C00453411 /* QuizDataRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizDataRepositoryProtocol.swift; sourceTree = "<group>"; };
+		9F74A0B6266653AD00453411 /* QuizDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizDataRepository.swift; sourceTree = "<group>"; };
+		9F74A0BC26665D3200453411 /* QuizUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizUseCase.swift; sourceTree = "<group>"; };
+		9FC68F322666C862000072AA /* TestController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestController.swift; sourceTree = "<group>"; };
+		D91BBC6EA0BAEE755BEED37F /* Pods-QuizApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuizApp.release.xcconfig"; path = "Target Support Files/Pods-QuizApp/Pods-QuizApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,17 +127,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				082F60B3AF2CF0B58984A3AF /* Pods_QuizApp.framework in Frameworks */,
+				13C3238B85BE4D540DCA614C /* Pods_QuizApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1BE31FCC074DF67A2A47C39D /* Frameworks */ = {
+		56AF84F30561017A85015594 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				AD3EB08D38C9DCF310062808 /* Pods_QuizApp.framework */,
+				1E7A52BB1C28436B96C4C953 /* Pods_QuizApp.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -117,7 +147,9 @@
 			children = (
 				9F4B6F3126274D3C0072BA36 /* LoginStatus.swift */,
 				9F4B6F3026274D3C0072BA36 /* Question.swift */,
+				9F74A08326661DC000453411 /* Question+CD.swift */,
 				9F4B6F3226274D3C0072BA36 /* Quiz.swift */,
+				9F74A0762666161300453411 /* Quiz+CD.swift */,
 				9F4B6F3326274D3C0072BA36 /* QuizCategory.swift */,
 				9F6717E226469A38006B4420 /* QuizResponse.swift */,
 				9F74A0252663D83500453411 /* Result.swift */,
@@ -126,6 +158,7 @@
 				9F74A0302663D8DF00453411 /* LoginResponseData.swift */,
 				9F74A038266411C800453411 /* QuizzesResponseData.swift */,
 				9F74A043266502E000453411 /* QuizResult.swift */,
+				9F74A0AB266646C000453411 /* FilterSettings.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -151,6 +184,7 @@
 				9F6717CC2646960A006B4420 /* SettingsViewController.swift */,
 				9F6717D226469780006B4420 /* QuizViewController.swift */,
 				9F6717E526469A75006B4420 /* ResultViewController.swift */,
+				9FC68F322666C862000072AA /* TestController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -198,7 +232,7 @@
 				9F6A3CE62626C7C800F1D908 /* QuizApp */,
 				9F6A3CE52626C7C800F1D908 /* Products */,
 				F89D646B2E9CBC1944F68A45 /* Pods */,
-				1BE31FCC074DF67A2A47C39D /* Frameworks */,
+				56AF84F30561017A85015594 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -213,37 +247,96 @@
 		9F6A3CE62626C7C800F1D908 /* QuizApp */ = {
 			isa = PBXGroup;
 			children = (
-				9F74A0332664006900453411 /* Logic */,
+				9F74A0332664006900453411 /* Presentation */,
 				9F6717B42645D3C3006B4420 /* Views */,
 				9F6717B22645D3B1006B4420 /* Router */,
 				9F6717AD2645D146006B4420 /* Controllers */,
-				9F4B6F4926274EF70072BA36 /* Services */,
-				9F4B6F1926274C6B0072BA36 /* Models */,
 				9F6A3CE72626C7C800F1D908 /* AppDelegate.swift */,
 				9F6A3CE92626C7C800F1D908 /* SceneDelegate.swift */,
 				9F6A3CED2626C7C800F1D908 /* Main.storyboard */,
 				9F6A3CF02626C7CB00F1D908 /* Assets.xcassets */,
 				9F6A3CF22626C7CB00F1D908 /* LaunchScreen.storyboard */,
 				9F6A3CF52626C7CB00F1D908 /* Info.plist */,
+				9F74A0BB26665D0700453411 /* Domain */,
+				9F74A04D26660EB400453411 /* Data */,
 			);
 			path = QuizApp;
 			sourceTree = "<group>";
 		};
-		9F74A0332664006900453411 /* Logic */ = {
+		9F74A0332664006900453411 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
 				9F74A0342664008800453411 /* QuizzesLogic.swift */,
 				9F74A03D2664144800453411 /* LoginLogic.swift */,
 				9F74A0402665026E00453411 /* QuizLogic.swift */,
 			);
-			path = Logic;
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		9F74A04C26660D9900453411 /* DataSources */ = {
+			isa = PBXGroup;
+			children = (
+				9F74A04F26660F5000453411 /* CoreData */,
+				9F4B6F4926274EF70072BA36 /* Services */,
+			);
+			path = DataSources;
+			sourceTree = "<group>";
+		};
+		9F74A04D26660EB400453411 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				9F4B6F1926274C6B0072BA36 /* Models */,
+				9F74A04E26660EF500453411 /* Repository */,
+				9F74A04C26660D9900453411 /* DataSources */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		9F74A04E26660EF500453411 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				9F74A0B32666535C00453411 /* QuizDataRepositoryProtocol.swift */,
+				9F74A0B6266653AD00453411 /* QuizDataRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		9F74A04F26660F5000453411 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				9F74A05026660F7000453411 /* ManagedModels */,
+				9F74A05126660F9F00453411 /* Model.xcdatamodeld */,
+				9F74A0A32666460800453411 /* QuizCoreDataSourceProtocol.swift */,
+				9F74A0A82666462700453411 /* QuizCoreDataSource.swift */,
+				9F74A0B02666530B00453411 /* CoreDataStack.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		9F74A05026660F7000453411 /* ManagedModels */ = {
+			isa = PBXGroup;
+			children = (
+				9F74A08C26661F2F00453411 /* CDQuestion+CoreDataClass.swift */,
+				9F74A09126661FF900453411 /* CDQuestion+CoreDataProperties.swift */,
+				9F74A0952666201100453411 /* CDQuiz+CoreDataProperties.swift */,
+				9F74A0982666202100453411 /* CDQuiz+CoreDataClass.swift */,
+			);
+			path = ManagedModels;
+			sourceTree = "<group>";
+		};
+		9F74A0BB26665D0700453411 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				9F74A0BC26665D3200453411 /* QuizUseCase.swift */,
+			);
+			path = Domain;
 			sourceTree = "<group>";
 		};
 		F89D646B2E9CBC1944F68A45 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				4AE2F3602D791D00CB2EA572 /* Pods-QuizApp.debug.xcconfig */,
-				9073BF06E36A3429155BD888 /* Pods-QuizApp.release.xcconfig */,
+				1F2DA925B034D0074AA2684B /* Pods-QuizApp.debug.xcconfig */,
+				D91BBC6EA0BAEE755BEED37F /* Pods-QuizApp.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -255,11 +348,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9F6A3CF82626C7CB00F1D908 /* Build configuration list for PBXNativeTarget "QuizApp" */;
 			buildPhases = (
-				62D578AEDFA1DC307E136FD6 /* [CP] Check Pods Manifest.lock */,
+				3120101821CAF762BF7F0A4F /* [CP] Check Pods Manifest.lock */,
 				9F6A3CE02626C7C800F1D908 /* Sources */,
 				9F6A3CE12626C7C800F1D908 /* Frameworks */,
 				9F6A3CE22626C7C800F1D908 /* Resources */,
-				C1F44A1227F8D635505CE342 /* [CP] Embed Pods Frameworks */,
+				425EAF84CB7ECB0F363AAC9F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -316,7 +409,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		62D578AEDFA1DC307E136FD6 /* [CP] Check Pods Manifest.lock */ = {
+		3120101821CAF762BF7F0A4F /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -338,7 +431,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		C1F44A1227F8D635505CE342 /* [CP] Embed Pods Frameworks */ = {
+		425EAF84CB7ECB0F363AAC9F /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -365,26 +458,41 @@
 				9F4B6F562627899E0072BA36 /* QuizzesViewController.swift in Sources */,
 				9F74A0292663D85300453411 /* RequestError.swift in Sources */,
 				9F6717C326468D7A006B4420 /* TabBarController.swift in Sources */,
+				9F74A0992666202100453411 /* CDQuiz+CoreDataClass.swift in Sources */,
 				9F4B6F3726274D3C0072BA36 /* QuizCategory.swift in Sources */,
 				9F74A0412665026E00453411 /* QuizLogic.swift in Sources */,
 				9F74A039266411C800453411 /* QuizzesResponseData.swift in Sources */,
+				9F74A0A92666462700453411 /* QuizCoreDataSource.swift in Sources */,
 				9F6717C02646860B006B4420 /* RatingView.swift in Sources */,
 				9F4B6F3526274D3C0072BA36 /* LoginStatus.swift in Sources */,
+				9F74A09226661FF900453411 /* CDQuestion+CoreDataProperties.swift in Sources */,
+				9F74A0962666201100453411 /* CDQuiz+CoreDataProperties.swift in Sources */,
 				9F74A02D2663D88100453411 /* ResponseError.swift in Sources */,
 				9F6717B62645D485006B4420 /* Router.swift in Sources */,
+				9F74A0AC266646C000453411 /* FilterSettings.swift in Sources */,
 				9F6717E0264699D0006B4420 /* QuestionTrackerView.swift in Sources */,
 				9F6717D6264697F0006B4420 /* QuizHeaderView.swift in Sources */,
 				9F4B6F5026275E6F0072BA36 /* LoginViewController.swift in Sources */,
 				9F6717E326469A38006B4420 /* QuizResponse.swift in Sources */,
 				9F74A01226639DB900453411 /* NetworkService.swift in Sources */,
+				9FC68F332666C862000072AA /* TestController.swift in Sources */,
 				9F6717E626469A75006B4420 /* ResultViewController.swift in Sources */,
 				9F4B6F3C26274D600072BA36 /* DataServiceProtocol.swift in Sources */,
+				9F74A05326660F9F00453411 /* Model.xcdatamodeld in Sources */,
 				9F6717BD2645DBBF006B4420 /* QuizCellView.swift in Sources */,
 				9F74A0262663D83500453411 /* Result.swift in Sources */,
 				9F74A03E2664144800453411 /* LoginLogic.swift in Sources */,
 				9F74A01526639FF900453411 /* NetworkServiceProtocol.swift in Sources */,
 				9F4B6F3626274D3C0072BA36 /* Quiz.swift in Sources */,
+				9F74A0B42666535C00453411 /* QuizDataRepositoryProtocol.swift in Sources */,
+				9F74A0B7266653AD00453411 /* QuizDataRepository.swift in Sources */,
+				9F74A0A42666460800453411 /* QuizCoreDataSourceProtocol.swift in Sources */,
+				9F74A08426661DC000453411 /* Question+CD.swift in Sources */,
+				9F74A0B12666530B00453411 /* CoreDataStack.swift in Sources */,
+				9F74A0BD26665D3200453411 /* QuizUseCase.swift in Sources */,
+				9F74A0772666161300453411 /* Quiz+CD.swift in Sources */,
 				9F6717CA264695F6006B4420 /* SearchViewController.swift in Sources */,
+				9F74A08D26661F2F00453411 /* CDQuestion+CoreDataClass.swift in Sources */,
 				9F4B6F3426274D3C0072BA36 /* Question.swift in Sources */,
 				9F6717CD2646960A006B4420 /* SettingsViewController.swift in Sources */,
 				9F6717BA2645D98B006B4420 /* QuizzesCollectionView.swift in Sources */,
@@ -539,7 +647,7 @@
 		};
 		9F6A3CF92626C7CB00F1D908 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4AE2F3602D791D00CB2EA572 /* Pods-QuizApp.debug.xcconfig */;
+			baseConfigurationReference = 1F2DA925B034D0074AA2684B /* Pods-QuizApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -559,7 +667,7 @@
 		};
 		9F6A3CFA2626C7CB00F1D908 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9073BF06E36A3429155BD888 /* Pods-QuizApp.release.xcconfig */;
+			baseConfigurationReference = D91BBC6EA0BAEE755BEED37F /* Pods-QuizApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -599,6 +707,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		9F74A05126660F9F00453411 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				9F74A05226660F9F00453411 /* Model.xcdatamodel */,
+			);
+			currentVersion = 9F74A05226660F9F00453411 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 9F6A3CDC2626C7C800F1D908 /* Project object */;
 }

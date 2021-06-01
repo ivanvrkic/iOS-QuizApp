@@ -7,7 +7,7 @@
 import Foundation
 import UIKit
 import PureLayout
-
+import CoreData
 class QuizzesViewController: UIViewController {
     
     private var router: AppRouterProtocol!
@@ -29,13 +29,16 @@ class QuizzesViewController: UIViewController {
     private let colorBackground = UIColor(red: 1, green: 1, blue: 1, alpha: 0)
     private var gradientLayer: CAGradientLayer!
     private var quizCollectionView: QuizzesCollectionView!
-    private var quizzesd: [QuizCategory:[Quiz]] = [:]
-    private let quizzesLogic = QuizzesLogic(networkService: NetworkService())
+    private var quizzesDict: [QuizCategory:[Quiz]] = [:]
+    private var quizzesLogic: QuizzesLogic!
+    var refreshControl: UIRefreshControl!
     
-    convenience init(router: AppRouterProtocol) {
+    convenience init(router: AppRouterProtocol, quizzesLogic: QuizzesLogic) {
         self.init()
         self.router = router
+        self.quizzesLogic = quizzesLogic
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         buildViews()
@@ -47,12 +50,13 @@ class QuizzesViewController: UIViewController {
           ]
         gradientLayer.frame = view.bounds
         view.layer.insertSublayer(gradientLayer, at: 0)
+        getQuizzes()
     }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         gradientLayer.frame = view.bounds
     }
-    
+
     private func buildViews() {
         popQuizLabel = UILabel()
         view.addSubview(popQuizLabel)
@@ -60,13 +64,7 @@ class QuizzesViewController: UIViewController {
         popQuizLabel.textAlignment = .center
         popQuizLabel.font = UIFont.systemFont(ofSize: 24, weight: UIFont.Weight.bold)
         popQuizLabel.textColor = .white
-        getButton = UIButton()
-        view.addSubview(getButton)
-        getButton.setTitle("Get Quiz", for: .normal)
-        getButton.setTitleColor(.black, for: .normal)
-        getButton.layer.cornerRadius = 25
-        getButton.backgroundColor = .white
-        getButton.addTarget(self, action: #selector(getQuizzes), for: .touchUpInside)
+
         errView = UIView()
         view.addSubview(errView)
         xImgErr = UIImageView(image: UIImage(systemName: "xmark.circle"))
@@ -113,11 +111,11 @@ class QuizzesViewController: UIViewController {
         popQuizLabel.autoSetDimension(.width, toSize: 200)
         popQuizLabel.autoAlignAxis(toSuperviewAxis: .vertical)
         
-        getButton.autoPinEdge(.top, to: .bottom, of: popQuizLabel, withOffset: 15)
-        getButton.autoSetDimensions(to: CGSize(width: 200, height: 50))
-        getButton.autoAlignAxis(toSuperviewAxis: .vertical)
+//        getButton.autoPinEdge(.top, to: .bottom, of: , withOffset: 15)
+//        getButton.autoSetDimensions(to: CGSize(width: 200, height: 50))
+//        getButton.autoAlignAxis(toSuperviewAxis: .vertical)
         
-        errView.autoPinEdge(.top, to: .bottom, of: getButton, withOffset: 10)
+        errView.autoPinEdge(.top, to: .bottom, of: popQuizLabel, withOffset: 10)
         errView.autoPinEdge(.bottom, to: .bottom, of: view, withOffset: 30)
         errView.autoPinEdge(toSuperviewSafeArea: .leading)
         errView.autoAlignAxis(toSuperviewAxis: .vertical)
@@ -133,7 +131,7 @@ class QuizzesViewController: UIViewController {
         xImgErr.autoSetDimensions(to: CGSize(width: 80, height: 80))
         xImgErr.autoAlignAxis(toSuperviewAxis: .vertical)
         
-        funFactLabel.autoPinEdge(.top, to: .bottom, of: getButton, withOffset: 10)
+        funFactLabel.autoPinEdge(.top, to: .bottom, of: popQuizLabel, withOffset: 10)
         funFactLabel.autoPinEdge(toSuperviewSafeArea: .leading, withInset: 20)
         funFactLabel.autoSetDimension(.height, toSize: 40)
         
@@ -149,15 +147,25 @@ class QuizzesViewController: UIViewController {
         ])
 
     }
-    @objc
     private func getQuizzes(){
-        quizzesLogic.fetchQuizzes() { quizzes in
+        do {
+            try quizzesLogic.refreshQuizzes()
+            quizzes = quizzesLogic.filterQuizzes(filter: FilterSettings(searchText: ""))
+            self.quizzesDict = quizzes.reduce([:] as! [QuizCategory: [Quiz]], {
+                    a, b in
+                        var map:[QuizCategory: [Quiz]] = a
+                        var value = map[b.category,default: []]
+                        value.append(b)
+                        map[b.category] = value
+                        return map
+                }
+            )
             self.errView.isHidden = true
             self.nbacount = quizzes.flatMap{$0.questions}.filter{$0.question.contains("NBA")}.count
             self.funFactLabel.isHidden=false
             self.infLabel.isHidden=false
             self.infLabel.text = "There are \(self.nbacount!) questions that contain the word NBA"
-            self.quizzesd = quizzes.reduce([:] as! [QuizCategory: [Quiz]], {
+            self.quizzesDict = quizzes.reduce([:] as! [QuizCategory: [Quiz]], {
                     a, b in
                         var map:[QuizCategory: [Quiz]] = a
                         var value = map[b.category,default: []]
@@ -167,9 +175,14 @@ class QuizzesViewController: UIViewController {
                 }
             )
             self.quizCollectionView.isHidden = false
-            self.quizCollectionView.addQuizzes(quizzes: self.quizzesd)
-            
+            self.quizCollectionView.addQuizzes(quizzes: self.quizzesDict)
+        } catch {
+            let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default))
+            present(alert, animated: true)
         }
+            
+        
         
     }
 

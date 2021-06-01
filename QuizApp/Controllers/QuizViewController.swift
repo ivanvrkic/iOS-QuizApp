@@ -80,9 +80,8 @@ class QuizViewController: UIViewController {
     
     private func setConstraints() {
         let safeArea = view.safeAreaLayoutGuide
-        let offset: CGFloat = 0.025*max(view.frame.width, view.frame.height)
         NSLayoutConstraint.activate([
-            questionIndexLabel.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: offset),
+            questionIndexLabel.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 5),
             questionIndexLabel.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 20),
             questionTrackerView.centerXAnchor.constraint(equalTo: safeArea.centerXAnchor, constant: 0),
             questionTrackerView.topAnchor.constraint(equalTo: questionIndexLabel.bottomAnchor, constant: 5),

@@ -26,10 +26,10 @@ class TabBarController: UITabBarController {
         let searchImage = UIImage(systemName: "magnifyingglass")
         let settingsImage = UIImage(systemName: "gearshape.fill")
         
-        let quizController = QuizzesViewController(router: router)
+        let quizController = QuizzesViewController(router: router,quizzesLogic: router.createQuizPresenter())
         quizController.tabBarItem = UITabBarItem(title: "Quiz", image: quizImage, selectedImage: nil)
         
-        let searchController = SearchViewController(router: router)
+        let searchController = SearchViewController(router: router, quizzesLogic: router.createQuizPresenter())
         searchController.tabBarItem = UITabBarItem(title: "Search", image: searchImage, selectedImage:
         nil)
         

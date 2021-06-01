@@ -14,12 +14,12 @@ protocol AppRouterProtocol {
     func popToRoot()
     func popBack()
     func setStartScreen(window: UIWindow?)
+    func createQuizPresenter() -> QuizzesLogic
 }
 
 class AppRouter: AppRouterProtocol {
         
     private let navigationController: UINavigationController!
-    
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
     }
@@ -49,5 +49,13 @@ class AppRouter: AppRouterProtocol {
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
     }
-    
+    func createQuizPresenter() -> QuizzesLogic {
+        let coreDataContext = CoreDataStack(modelName: "Model").managedContext
+        let quizDataRepository = QuizDataRepository(
+            networkDataSource: NetworkService(),
+            coreDataSource: QuizCoreDataSource(coreDataContext: coreDataContext))
+        let quizUseCase = QuizUseCase(quizRepository: quizDataRepository)
+        let presenter = QuizzesLogic(networkService: NetworkService(), quizUseCase: quizUseCase)
+        return presenter
+    }
 }
