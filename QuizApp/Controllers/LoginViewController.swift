@@ -148,21 +148,13 @@ class LoginViewController: UIViewController {
     }
     
     private func animate() {
-        //set starting point
-        //pop label animation
         popQuizLabel.transform = CGAffineTransform(scaleX: 0, y: 0)
         popQuizLabel.alpha = 0
-        //username animation
         emailView.transform = emailView.transform.translatedBy(x: -self.view.frame.width, y: 0)
         emailView.alpha = 0
-        
-        //password animation
         passwordView.transform = passwordView.transform.translatedBy(x: -self.view.frame.width, y: 0)
         passwordView.alpha = 0
-        
-        //login animation
         loginButton.transform = loginButton.transform.translatedBy(x: -self.view.frame.width, y: 0)
-        loginButton.alpha = 1
         
         //animate pop label
         UIView.animate(withDuration: 1.5,
