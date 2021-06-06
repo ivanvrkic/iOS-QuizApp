@@ -10,7 +10,6 @@ import UIKit
 
 class LoginViewController: UIViewController {
     private var router: AppRouterProtocol!
-    private var PopQuizLabel: UILabel!
     private var popQuizLabel: UILabel!
     private var emailTextF: UITextField!
     private var passwordTextF: UITextField!
@@ -28,8 +27,9 @@ class LoginViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: false)
+        animate()
     }
-    
+
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: false)
@@ -52,12 +52,12 @@ class LoginViewController: UIViewController {
         gradientLayer.frame = view.bounds
     }
     private func buildViews() {
-        PopQuizLabel = UILabel()
-        view.addSubview(PopQuizLabel)
-        PopQuizLabel.text = "PopQuiz"
-        PopQuizLabel.textAlignment = .center
-        PopQuizLabel.font = UIFont.systemFont(ofSize: 32, weight: UIFont.Weight.black)
-        PopQuizLabel.textColor = .white
+        popQuizLabel = UILabel()
+        view.addSubview(popQuizLabel)
+        popQuizLabel.text = "PopQuiz"
+        popQuizLabel.textAlignment = .center
+        popQuizLabel.font = UIFont.systemFont(ofSize: 32, weight: UIFont.Weight.black)
+        popQuizLabel.textColor = .white
         emailView = UIView()
         emailTextF = UITextField()
         view.addSubview(emailView)
@@ -83,12 +83,12 @@ class LoginViewController: UIViewController {
     
     private func addConstraints() {
 
-        PopQuizLabel.translatesAutoresizingMaskIntoConstraints = false
+        popQuizLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            PopQuizLabel.widthAnchor.constraint(equalToConstant: 200),
-            PopQuizLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            PopQuizLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 110),
-            PopQuizLabel.heightAnchor.constraint(equalToConstant: 50),
+            popQuizLabel.widthAnchor.constraint(equalToConstant: 200),
+            popQuizLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            popQuizLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 110),
+            popQuizLabel.heightAnchor.constraint(equalToConstant: 50),
         ])
         
         emailView.translatesAutoresizingMaskIntoConstraints = false
@@ -147,6 +147,53 @@ class LoginViewController: UIViewController {
         
     }
     
+    private func animate() {
+        //set starting point
+        //pop label animation
+        popQuizLabel.transform = CGAffineTransform(scaleX: 0, y: 0)
+        popQuizLabel.alpha = 0
+        //username animation
+        emailView.transform = emailView.transform.translatedBy(x: -self.view.frame.width, y: 0)
+        emailView.alpha = 0
+        
+        //password animation
+        passwordView.transform = passwordView.transform.translatedBy(x: -self.view.frame.width, y: 0)
+        passwordView.alpha = 0
+        
+        //login animation
+        loginButton.transform = loginButton.transform.translatedBy(x: -self.view.frame.width, y: 0)
+        loginButton.alpha = 1
+        
+        //animate pop label
+        UIView.animate(withDuration: 1.5,
+           animations: {
+                self.popQuizLabel.alpha = 1
+                self.popQuizLabel.transform = .identity
+            }
+        )
+        UIView.animate(withDuration: 1.5, delay: 0,
+            options: [.curveEaseOut],
+            animations: {
+                self.emailView.transform = .identity
+                self.emailView.alpha = 1
+            }
+        )
+        UIView.animate(withDuration: 1.5, delay: 0.25,
+            options: [.curveEaseOut],
+            animations: {
+                self.passwordView.transform = .identity
+                self.passwordView.alpha = 1
+            }
+        )
+        UIView.animate(withDuration: 1.5, delay:0.5,
+            options: [.curveEaseOut],
+            animations: {
+                self.loginButton.transform = .identity
+                self.loginButton.alpha = 1
+            }
+        )
+    }
+
     @objc
     private func focus() {
         emailView.layer.borderColor = UIColor.white.cgColor
@@ -168,7 +215,24 @@ class LoginViewController: UIViewController {
                            completion: { _ in self.loginButton.alpha = 0.5})
             switch loginStatus {
                 case LoginStatus.success:
-                    self.router.setTabBarController()
+                    UIView.animate(withDuration: 1.5, animations: {
+                            self.popQuizLabel.transform = CGAffineTransform(translationX: 0, y:  -self.view.frame.height)
+                    })
+                    UIView.animate(withDuration: 1.5, delay: 0.25,
+                    animations: {
+                            self.emailView.transform = CGAffineTransform(translationX: 0, y:  -self.view.frame.height)
+                    })
+                    UIView.animate(withDuration: 1.5, delay: 0.50,
+                                   animations: {
+                            self.passwordView.transform = CGAffineTransform(translationX: 0, y:  -self.view.frame.height)
+                    })
+                    UIView.animate(withDuration: 1.5, delay: 0.75,
+                    animations: {
+                            self.loginButton.transform = CGAffineTransform(translationX: 0, y:  -self.view.frame.height)
+                    },
+                    completion: {_ in
+                        self.router.setTabBarController()
+                    })
                 case LoginStatus.error(_, _):
                     print(loginStatus)
             }
